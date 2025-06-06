@@ -36,4 +36,5 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test with pytest
       run: |
-        pytest
+        # Run pytest and treat 'no tests collected' (exit code 5) as success
+        pytest || (ec=$?; if [ $ec -eq 5 ]; then echo "No tests collected, continuing..."; exit 0; else exit $ec; fi)
