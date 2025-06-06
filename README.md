@@ -1,49 +1,86 @@
 # Undiscriminating Discriminator
 
-## Overview
-Undiscriminating Discriminator is a conceptual pilot to explore the technical feasibility of a "least discriminating multi-model approach" to AI in HR skill management. It is currently in the MVP phase and does not have rich features apart from adding the basic conceptual data types via the Django native REST frontend management.
+[![Python 3.12](https://img.shields.io/badge/python-3.12-blue.svg)](https://www.python.org/) [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
-## Features
-- Basic conceptual data types management via Django REST framework.
-- MVP implementation for testing feasibility.
-- Simple and minimalistic design for experimentation.
+## Overview
+Undiscriminating Discriminator is an MVP prototype exploring a least-discriminating multi-model approach for AI-driven HR skill management. It provides a RESTful interface to manage employees, skills, certifications, projects, budgets, and development actions, facilitating experimentation with fair, multi-framework competency models.
+
+### Features
+- CRUD operations for Employees, Skills, Certifications, Projects, Budgets, and Development Actions via Django REST framework.
+- Data fixtures for rapid testing and demonstration.
+- Modular design supporting extension with additional AI/ML models and fairness frameworks.
+
+## Tech Stack
+- Python 3.12
+- Django 4.x
+- Django REST framework
+- SQLite (default; easily configurable for PostgreSQL/MySQL)
+- Pytest for testing
+- Black for code formatting
+
+## Prerequisites
+- Git
+- Python 3.12
+- Pipenv (or `venv` and `pip`)
 
 ## Installation
-To install the project, follow these steps:
 1. Clone the repository:
    ```bash
    git clone https://github.com/your-username/undiscriminating_discriminator.git
-   ```
-2. Navigate to the project directory:
-   ```bash
    cd undiscriminating_discriminator
    ```
-3. Create and activate a virtual environment:
+2. Install dependencies with Pipenv:
    ```bash
-   python -m venv env
-   source env/bin/activate  # On Windows, use `env\Scripts\activate`
+   pipenv install --dev
+   pipenv shell
    ```
-4. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
+   *Alternatively, use `python -m venv env && source env/bin/activate && pip install -r requirements.txt`.*
+3. Configure environment variables: create a `.env` file in the project root (see `.env.example`):
+   ```ini
+   DEBUG=True
+   SECRET_KEY=your-secret-key
+   DATABASE_URL=sqlite:///db.sqlite3
    ```
-5. Apply database migrations:
+4. Apply migrations and load sample data:
    ```bash
    python manage.py migrate
+   python manage.py loaddata fixtures/sample_data.json
    ```
 
-## Usage
-To run the development server, use the following command:
+## Running the Application
+Start the development server:
 ```bash
 python manage.py runserver
 ```
+Visit `http://127.0.0.1:8000/` for the API root, or navigate to specific endpoints (see **API Endpoints** below).
+
+## API Endpoints
+| Resource                 | Endpoint                       | Methods       |
+| ------------------------ | ------------------------------ | ------------- |
+| Employees                | `/api/employees/`              | GET, POST     |
+| Employee Detail          | `/api/employees/{id}/`         | GET, PUT, DELETE |
+| Skills                   | `/api/skills/`                 | GET, POST     |
+| Certifications           | `/api/certifications/`         | GET, POST     |
+| Projects                 | `/api/projects/`               | GET, POST     |
+| Budgets                  | `/api/budgets/`                | GET, POST     |
+| Development Actions      | `/api/development-actions/`    | GET, POST     |
+
+## Testing
+Run the full test suite with coverage:
+```bash
+pytest --cov=.
+```  
+Ensure code is formatted and linted:
+```bash
+black --check .
+```  
 
 ## Contributing
 Contributions are welcome! Please follow these steps:
-1. Fork the repository.
-2. Create a new branch for your feature or bugfix.
-3. Commit your changes and push the branch.
-4. Submit a pull request.
+1. Fork the repository and create a feature branch (`git checkout -b feature/my-feature`).
+2. Commit your changes (`git commit -am 'Add new feature'`).
+3. Ensure all tests pass and code is formatted (`pytest`, `black`).
+4. Push to the branch (`git push origin feature/my-feature`) and submit a Pull Request.
 
 ## License
-This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
