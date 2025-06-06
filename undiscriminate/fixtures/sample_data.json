@@ -1,0 +1,29 @@
+[
+  {
+    "model": "skillzor.EmployeeSkill",
+    "pk": 1,
+    "fields": {
+        "employee": 1,
+        "skill": 1,
+        "proficiency_level": 1,
+        "last_updated": "2023-10-01T12:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.Skill",
+    "pk": 1,
+    "fields": {
+      "name": "Project Management",
+      "description": "Managing teams and timelines"
+    }
+  },
+  {
+    "model": "skillzor.Employee",
+    "pk": 1,
+    "fields": {
+      "first_name": "John",
+      "last_name": "Doe",
+      "department": "Engineering"
+    }
+  }
+]
