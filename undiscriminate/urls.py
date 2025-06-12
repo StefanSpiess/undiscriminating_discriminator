@@ -10,6 +10,6 @@ router = DefaultRouter()
 # router.register(r'your_endpoint', YourViewSet)
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('api/', include(router.urls)),  # Ensure this is included
+    path("admin/", admin.site.urls),
+    path("api/", include(router.urls)),  # Ensure this is included
 ]
