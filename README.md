@@ -61,6 +61,11 @@ python manage.py runserver
 ```
 Visit `http://127.0.0.1:8000/api/` for the API root, or navigate to specific endpoints (see **API Endpoints** below).
 
+## Frontend Authentication Example
+A simple page demonstrating Google Single Sign-On is located at `frontend/index.html`.
+Replace `YOUR_GOOGLE_CLIENT_ID` with a client ID from the Google Cloud console
+and open the file in a browser to test the sign-in flow.
+
 ## API Endpoints
 | Resource                 | Endpoint                       | Methods       |
 | ------------------------ | ------------------------------ | ------------- |
