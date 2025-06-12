@@ -64,8 +64,11 @@ Visit `http://127.0.0.1:8000/api/` for the API root, or navigate to specific end
 ## Frontend Authentication Example
 An example login form using the OAuth2 *password* grant is provided in
 `frontend/index.html`.
-Serve the `frontend` directory via `python -m http.server 9000` (or any other
-port) and open `http://localhost:9000/index.html` in a browser.
+Copy `frontend/oauth_config.example.js` to `frontend/oauth_config.js` and
+replace the placeholder values with the client ID and secret from the Django
+admin (**Applications** section). Serve the `frontend` directory via
+`python -m http.server 9000` (or any other port) and open
+`http://localhost:9000/index.html` in a browser.
 The form posts the user's credentials to `/o/token/` and displays the returned
 access token. This flow is intended for local testing only and should not be
 used in production.

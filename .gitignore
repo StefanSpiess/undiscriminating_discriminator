@@ -53,3 +53,4 @@ dist/
 # Static files
 staticfiles/
 media/
+frontend/oauth_config.js
