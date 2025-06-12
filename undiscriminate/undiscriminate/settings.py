@@ -14,6 +14,8 @@ from pathlib import Path
 import os
 import warnings
 
+DEFAULT_INSECURE_SECRET = "insecure-placeholder-secret"
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -27,7 +29,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 
 if not SECRET_KEY:
     if DEBUG:
-        SECRET_KEY = "insecure-placeholder-secret"
+        SECRET_KEY = DEFAULT_INSECURE_SECRET
         warnings.warn(
             "SECRET_KEY not set. Using insecure placeholder for development. "
             "Set SECRET_KEY to a strong value.",
