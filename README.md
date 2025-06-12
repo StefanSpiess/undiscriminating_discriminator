@@ -45,6 +45,9 @@ This repository is designed for iterative development with LLM-based code assist
    ALLOWED_HOSTS=localhost,127.0.0.1
    DATABASE_URL=sqlite:///db.sqlite3
    ```
+   If `SECRET_KEY` is missing and `DEBUG` is `True`, a development placeholder is used
+   and a warning is logged using Django's logging system. When `DEBUG` is `False`, `SECRET_KEY` must be set or the
+   application will fail to start.
 4. Apply migrations and load sample data:
    ```bash
    python manage.py migrate
@@ -77,7 +80,12 @@ pytest --cov=.
 Ensure code is formatted and linted:
 ```bash
 black --check .
-```  
+```
+Alternatively, use the included `Makefile`:
+```bash
+make install  # install dependencies with Pipenv
+make check    # run black, flake8, and tests
+```
 
 ## Contributing
 Contributions are welcome! Please follow these steps:

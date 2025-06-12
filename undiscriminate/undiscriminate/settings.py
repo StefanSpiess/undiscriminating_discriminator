@@ -12,6 +12,11 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 import os
+import logging
+
+logger = logging.getLogger(__name__)
+
+DEFAULT_INSECURE_SECRET = "insecure-placeholder-secret"
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,10 +25,21 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
+
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv("SECRET_KEY")
+
 if not SECRET_KEY:
-    raise RuntimeError("The SECRET_KEY environment variable is not set. This is required for security.")
+    if DEBUG:
+        SECRET_KEY = DEFAULT_INSECURE_SECRET
+        logger.warning(
+            "SECRET_KEY not set. Using insecure placeholder for development. "
+            "Set SECRET_KEY to a strong value."
+        )
+    else:
+        raise RuntimeError(
+            "The SECRET_KEY environment variable is not set. This is required for security."
+        )
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG", "True") == "True"
