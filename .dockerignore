@@ -3,3 +3,8 @@ background/
 plugins/
 .git
 .github
+
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
