@@ -60,5 +60,5 @@ router.register(
 )
 
 urlpatterns = [
-    path('admin/', admin.site.urls),  # Add this line for the admin interface
+    path("admin/", admin.site.urls),  # Add this line for the admin interface
 ] + router.urls
