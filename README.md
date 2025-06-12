@@ -10,6 +10,9 @@ Undiscriminating Discriminator is an MVP prototype exploring a least-discriminat
 - Data fixtures for rapid testing and demonstration.
 - Modular design supporting extension with additional AI/ML models and fairness frameworks.
 
+## LLM Code Assistant Collaboration
+This repository is designed for iterative development with LLM-based code assistant agents. Guidelines for maintainers and agents reside in [AGENTS.md](AGENTS.md). Additional context is stored in `background/` and plugin documentation in `plugins/`. These directories are development-only resources and should be excluded from runtime containers.
+
 ## Tech Stack
 - Python 3.12
 - Django 5.2
