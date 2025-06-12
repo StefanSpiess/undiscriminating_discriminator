@@ -80,7 +80,12 @@ pytest --cov=.
 Ensure code is formatted and linted:
 ```bash
 black --check .
-```  
+```
+Alternatively, use the included `Makefile`:
+```bash
+make install  # install dependencies with Pipenv
+make check    # run black, flake8, and tests
+```
 
 ## Contributing
 Contributions are welcome! Please follow these steps:
