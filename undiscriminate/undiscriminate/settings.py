@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 import os
+import warnings
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,6 +28,11 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 if not SECRET_KEY:
     if DEBUG:
         SECRET_KEY = "insecure-placeholder-secret"
+        warnings.warn(
+            "SECRET_KEY not set. Using insecure placeholder for development. "
+            "Set SECRET_KEY to a strong value.",
+            RuntimeWarning,
+        )
     else:
         raise RuntimeError(
             "The SECRET_KEY environment variable is not set. This is required for security."
