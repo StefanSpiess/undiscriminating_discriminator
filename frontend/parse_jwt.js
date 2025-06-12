@@ -1,7 +1,11 @@
 (function (global) {
   function parseJwt(token) {
     try {
-      const base64Url = token.split('.')[1];
+      const segments = token.split('.');
+      if (segments.length !== 3) {
+        return null;
+      }
+      const base64Url = segments[1];
       const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
       const jsonPayload = decodeURIComponent(
         atob(base64)
