@@ -25,7 +25,7 @@
       function handleCredentialResponse(response) {
         const token = response.credential;
         const info = parseJwt(token);
-        document.getElementById('token').textContent = JSON.stringify(info, null, 2);
+        document.getElementById('user-info').textContent = JSON.stringify(info, null, 2);
       }
     </script>
 </head>
@@ -37,6 +37,6 @@
     </div>
     <div class="g_id_signin" data-type="standard"></div>
     <h2>User Info</h2>
-    <pre id="token"></pre>
-</body>
+    <pre id="user-info"></pre>
+  </body>
 </html>
