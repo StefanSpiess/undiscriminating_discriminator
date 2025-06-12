@@ -12,7 +12,9 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 import os
-import warnings
+import logging
+
+logger = logging.getLogger(__name__)
 
 DEFAULT_INSECURE_SECRET = "insecure-placeholder-secret"
 
@@ -30,10 +32,9 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 if not SECRET_KEY:
     if DEBUG:
         SECRET_KEY = DEFAULT_INSECURE_SECRET
-        warnings.warn(
+        logger.warning(
             "SECRET_KEY not set. Using insecure placeholder for development. "
-            "Set SECRET_KEY to a strong value.",
-            RuntimeWarning,
+            "Set SECRET_KEY to a strong value."
         )
     else:
         raise RuntimeError(

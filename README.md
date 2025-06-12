@@ -46,7 +46,7 @@ This repository is designed for iterative development with LLM-based code assist
    DATABASE_URL=sqlite:///db.sqlite3
    ```
    If `SECRET_KEY` is missing and `DEBUG` is `True`, a development placeholder is used
-   and a warning is logged. When `DEBUG` is `False`, `SECRET_KEY` must be set or the
+   and a warning is logged using Django's logging system. When `DEBUG` is `False`, `SECRET_KEY` must be set or the
    application will fail to start.
 4. Apply migrations and load sample data:
    ```bash
