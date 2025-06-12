@@ -16,7 +16,9 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-DEFAULT_INSECURE_SECRET = "insecure-placeholder-secret"
+DEFAULT_INSECURE_SECRET = os.getenv(
+    "DEFAULT_INSECURE_SECRET", "insecure-placeholder-secret"
+)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
