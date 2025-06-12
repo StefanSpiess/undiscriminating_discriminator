@@ -12,7 +12,7 @@ Undiscriminating Discriminator is an MVP prototype exploring a least-discriminat
 
 ## Tech Stack
 - Python 3.12
-- Django 4.x
+- Django 5.2
 - Django REST framework
 - SQLite (default; easily configurable for PostgreSQL/MySQL)
 - Pytest for testing
