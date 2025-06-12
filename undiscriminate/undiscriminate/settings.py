@@ -49,6 +49,8 @@ if not SECRET_KEY:
 ALLOWED_HOSTS = [
     host.strip() for host in os.getenv("ALLOWED_HOSTS", "").split(",") if host
 ]
+if DEBUG:
+    ALLOWED_HOSTS.append("testserver")
 
 # Application definition
 
@@ -61,6 +63,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "skillzor",
     "rest_framework",
+    "oauth2_provider",
 ]
 
 MIDDLEWARE = [
@@ -154,6 +157,10 @@ REST_FRAMEWORK = {
         "rest_framework.parsers.JSONParser",
         "rest_framework.parsers.FormParser",  # Added to support form data
         "rest_framework.parsers.MultiPartParser",  # Added to support file uploads
+    ],
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "oauth2_provider.contrib.rest_framework.OAuth2Authentication",
+        "rest_framework.authentication.SessionAuthentication",
     ],
     "DEFAULT_PERMISSION_CLASSES": [
         "rest_framework.permissions.IsAuthenticated",

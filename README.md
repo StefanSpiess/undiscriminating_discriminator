@@ -62,12 +62,16 @@ python manage.py runserver
 Visit `http://127.0.0.1:8000/api/` for the API root, or navigate to specific endpoints (see **API Endpoints** below).
 
 ## Frontend Authentication Example
-A simple page demonstrating Google Single Sign-On is located at `frontend/index.html`.
-Replace `YOUR_GOOGLE_CLIENT_ID` with a client ID from the Google Cloud console.
-Serve the `frontend` directory using `python -m http.server 9000` (or any
-available port) and open `http://localhost:9000/index.html` in a browser to
-test the sign-in flow. Using a different port avoids conflicts with Django's
-`runserver`, which defaults to port 8000.
+An example login form using the OAuth2 *password* grant is provided in
+`frontend/index.html`.
+Copy `frontend/oauth_config.example.js` to `frontend/oauth_config.js` and
+replace the placeholder values with the client ID and secret from the Django
+admin (**Applications** section). Serve the `frontend` directory via
+`python -m http.server 9000` (or any other port) and open
+`http://localhost:9000/index.html` in a browser.
+The form posts the user's credentials to `/o/token/` and displays the returned
+access token. This flow is intended for local testing only and should not be
+used in production.
 
 ## API Endpoints
 | Resource                 | Endpoint                       | Methods       |

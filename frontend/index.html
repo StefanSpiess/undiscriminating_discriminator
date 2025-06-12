@@ -3,29 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign in with Google</title>
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
-    <script src="parse_jwt.js"></script>
+    <title>OAuth2 Password Grant Test</title>
     <style>
         body { font-family: sans-serif; margin: 2rem; }
         pre { background: #f5f5f5; padding: 1rem; }
     </style>
-    <script>
-      function handleCredentialResponse(response) {
-        const token = response.credential;
-        const info = parseJwt(token);
-        document.getElementById('user-info').textContent = JSON.stringify(info, null, 2);
-      }
-    </script>
 </head>
 <body>
-    <h1>Google SSO Test</h1>
-    <div id="g_id_onload"
-         data-client_id="YOUR_GOOGLE_CLIENT_ID"
-         data-callback="handleCredentialResponse">
-    </div>
-    <div class="g_id_signin" data-type="standard"></div>
-    <h2>User Info</h2>
-    <pre id="user-info"></pre>
-  </body>
+    <h1>OAuth2 Password Grant</h1>
+    <form id="login-form">
+        <label>
+            Username
+            <input type="text" id="username" required />
+        </label>
+        <br/>
+        <label>
+            Password
+            <input type="password" id="password" required />
+        </label>
+        <br/>
+        <button type="submit">Login</button>
+    </form>
+    <h2>Token Response</h2>
+    <pre id="token-response"></pre>
+    <script src="oauth_config.js"></script>
+    <script>
+        document.getElementById('login-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const data = new URLSearchParams();
+            data.append('grant_type', 'password');
+            data.append('username', document.getElementById('username').value);
+            data.append('password', document.getElementById('password').value);
+            if (typeof OAUTH_CLIENT_ID === 'undefined' || typeof OAUTH_CLIENT_SECRET === 'undefined') {
+                alert('OAuth client credentials are not configured. Copy oauth_config.example.js to oauth_config.js and fill in your values.');
+                return;
+            }
+            data.append('client_id', OAUTH_CLIENT_ID);
+            data.append('client_secret', OAUTH_CLIENT_SECRET);
+            const res = await fetch('http://localhost:8000/o/token/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: data
+            });
+            const text = await res.text();
+            document.getElementById('token-response').textContent = text;
+        });
+    </script>
+</body>
 </html>
