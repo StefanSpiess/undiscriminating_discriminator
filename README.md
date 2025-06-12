@@ -45,7 +45,8 @@ This repository is designed for iterative development with LLM-based code assist
    ALLOWED_HOSTS=localhost,127.0.0.1
    DATABASE_URL=sqlite:///db.sqlite3
    ```
-   If `SECRET_KEY` is not provided, a development placeholder will be used.
+   If `SECRET_KEY` is missing and `DEBUG` is `True`, a development placeholder is used.
+   When `DEBUG` is `False`, `SECRET_KEY` must be set or the application will fail to start.
 4. Apply migrations and load sample data:
    ```bash
    python manage.py migrate
