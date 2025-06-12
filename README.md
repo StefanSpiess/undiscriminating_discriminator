@@ -42,8 +42,10 @@ This repository is designed for iterative development with LLM-based code assist
    ```ini
    DEBUG=True
    SECRET_KEY=your-secret-key
+   ALLOWED_HOSTS=localhost,127.0.0.1
    DATABASE_URL=sqlite:///db.sqlite3
    ```
+   If `SECRET_KEY` is not provided, a development placeholder will be used.
 4. Apply migrations and load sample data:
    ```bash
    python manage.py migrate
@@ -55,7 +57,7 @@ Start the development server:
 ```bash
 python manage.py runserver
 ```
-Visit `http://127.0.0.1:8000/` for the API root, or navigate to specific endpoints (see **API Endpoints** below).
+Visit `http://127.0.0.1:8000/api/` for the API root, or navigate to specific endpoints (see **API Endpoints** below).
 
 ## API Endpoints
 | Resource                 | Endpoint                       | Methods       |
