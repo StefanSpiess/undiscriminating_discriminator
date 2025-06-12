@@ -1,0 +1,42 @@
+name: Build and Deploy to Hetzner
+
+on:
+  push:
+    branches: [ "development" ]
+  release:
+    types: [ published ]
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to Hetzner Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ secrets.HCR_REGISTRY }}
+          username: ${{ secrets.HCR_USERNAME }}
+          password: ${{ secrets.HCR_PASSWORD }}
+
+      - name: Build and push image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: ${{ secrets.HCR_REGISTRY }}/undiscriminating-discriminator:${{ github.sha }}
+
+      - name: Setup kubectl
+        uses: azure/setup-kubectl@v3
+        with:
+          version: "latest"
+
+      - name: Deploy to cluster
+        env:
+          KUBECONFIG: ${{ secrets.KUBE_CONFIG }}
+        run: |
+          kubectl set image deployment/undiscriminating-discriminator app=${{ secrets.HCR_REGISTRY }}/undiscriminating-discriminator:${{ github.sha }}
