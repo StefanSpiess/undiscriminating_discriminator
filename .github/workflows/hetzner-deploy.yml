@@ -1,8 +1,6 @@
 name: Build and Deploy to Hetzner
 
 on:
-  push:
-    branches: [ "development" ]
   release:
     types: [ published ]
   workflow_dispatch:

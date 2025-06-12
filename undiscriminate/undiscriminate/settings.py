@@ -48,7 +48,6 @@ ALLOWED_HOSTS = [
     host.strip() for host in os.getenv("ALLOWED_HOSTS", "").split(",") if host
 ]
 
-
 # Application definition
 
 INSTALLED_APPS = [
