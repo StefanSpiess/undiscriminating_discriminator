@@ -13,4 +13,4 @@ def test_employee_list_returns_200():
     client = APIClient()
     client.force_authenticate(user=user)
     response = client.get("/api/employees/")
-    assert response.status_code == 200
+    assert response.status_code == 200  # nosec B101
