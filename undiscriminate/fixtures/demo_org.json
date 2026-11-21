@@ -1,0 +1,1638 @@
+[
+  {
+    "model": "skillzor.skill",
+    "pk": 1,
+    "fields": {
+      "name": "Architecture Design",
+      "description": "Specifies and refines the overall ICT architecture.",
+      "category": "e-CF 4.0",
+      "framework_ref": "e-CF:A.5",
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.skill",
+    "pk": 2,
+    "fields": {
+      "name": "Application Design",
+      "description": "Designs ICT solutions that meet business needs.",
+      "category": "e-CF 4.0",
+      "framework_ref": "e-CF:A.6",
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.skill",
+    "pk": 3,
+    "fields": {
+      "name": "Application Development",
+      "description": "Builds and maintains software applications.",
+      "category": "e-CF 4.0",
+      "framework_ref": "e-CF:B.1",
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.skill",
+    "pk": 4,
+    "fields": {
+      "name": "Testing",
+      "description": "Designs and executes test plans and quality checks.",
+      "category": "e-CF 4.0",
+      "framework_ref": "e-CF:B.3",
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.skill",
+    "pk": 5,
+    "fields": {
+      "name": "Data Science and Analytics",
+      "description": "Derives insights from data with statistical methods.",
+      "category": "e-CF 4.0",
+      "framework_ref": "e-CF:D.7",
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.skill",
+    "pk": 6,
+    "fields": {
+      "name": "Information and Knowledge Management",
+      "description": "Structures and shares organisational knowledge.",
+      "category": "e-CF 4.0",
+      "framework_ref": "e-CF:D.10",
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.skill",
+    "pk": 7,
+    "fields": {
+      "name": "Needs Identification",
+      "description": "Clarifies customer requirements and translates them into solutions.",
+      "category": "e-CF 4.0",
+      "framework_ref": "e-CF:D.11",
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.skill",
+    "pk": 8,
+    "fields": {
+      "name": "Project and Portfolio Management",
+      "description": "Plans and steers projects to agreed outcomes.",
+      "category": "e-CF 4.0",
+      "framework_ref": "e-CF:E.2",
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.skill",
+    "pk": 9,
+    "fields": {
+      "name": "Information Security Management",
+      "description": "Implements and maintains security controls.",
+      "category": "e-CF 4.0",
+      "framework_ref": "e-CF:E.8",
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.certification",
+    "pk": 1,
+    "fields": {
+      "name": "ISTQB Certified Tester Foundation Level",
+      "issuer": "ISTQB",
+      "description": "ISTQB Certified Tester Foundation Level",
+      "validity_period": "3 years",
+      "external_ref": "",
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.certification",
+    "pk": 2,
+    "fields": {
+      "name": "Professional Scrum Master I",
+      "issuer": "Scrum.org",
+      "description": "Professional Scrum Master I",
+      "validity_period": "3 years",
+      "external_ref": "",
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.certification",
+    "pk": 3,
+    "fields": {
+      "name": "Certified Information Systems Security Professional",
+      "issuer": "ISC2",
+      "description": "Certified Information Systems Security Professional",
+      "validity_period": "3 years",
+      "external_ref": "",
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employee",
+    "pk": 1,
+    "fields": {
+      "first_name": "Pia",
+      "last_name": "Zeder",
+      "department": "Engineering",
+      "job_title": "Software Engineer",
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 1,
+    "fields": {
+      "employee": 1,
+      "skill": 2,
+      "proficiency_level": 3,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 2,
+    "fields": {
+      "employee": 1,
+      "skill": 3,
+      "proficiency_level": 1,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 3,
+    "fields": {
+      "employee": 1,
+      "skill": 4,
+      "proficiency_level": 2,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeecertification",
+    "pk": 1,
+    "fields": {
+      "employee": 1,
+      "certification": 1,
+      "issue_date": "2021-05-01",
+      "expiration_date": null,
+      "last_updated": "2026-01-01T00:00:00Z",
+      "evidence": ""
+    }
+  },
+  {
+    "model": "skillzor.employeecertification",
+    "pk": 2,
+    "fields": {
+      "employee": 1,
+      "certification": 2,
+      "issue_date": "2025-06-01",
+      "expiration_date": null,
+      "last_updated": "2026-01-01T00:00:00Z",
+      "evidence": ""
+    }
+  },
+  {
+    "model": "skillzor.employee",
+    "pk": 2,
+    "fields": {
+      "first_name": "Kim",
+      "last_name": "Zeder",
+      "department": "Engineering",
+      "job_title": "Software Engineer",
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 4,
+    "fields": {
+      "employee": 2,
+      "skill": 2,
+      "proficiency_level": 1,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 5,
+    "fields": {
+      "employee": 2,
+      "skill": 3,
+      "proficiency_level": 1,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 6,
+    "fields": {
+      "employee": 2,
+      "skill": 4,
+      "proficiency_level": 4,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeecertification",
+    "pk": 3,
+    "fields": {
+      "employee": 2,
+      "certification": 1,
+      "issue_date": "2025-06-01",
+      "expiration_date": null,
+      "last_updated": "2026-01-01T00:00:00Z",
+      "evidence": ""
+    }
+  },
+  {
+    "model": "skillzor.employeecertification",
+    "pk": 4,
+    "fields": {
+      "employee": 2,
+      "certification": 2,
+      "issue_date": "2025-01-01",
+      "expiration_date": null,
+      "last_updated": "2026-01-01T00:00:00Z",
+      "evidence": ""
+    }
+  },
+  {
+    "model": "skillzor.employee",
+    "pk": 3,
+    "fields": {
+      "first_name": "Alex",
+      "last_name": "Adler",
+      "department": "Engineering",
+      "job_title": "Software Engineer",
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 7,
+    "fields": {
+      "employee": 3,
+      "skill": 2,
+      "proficiency_level": 4,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 8,
+    "fields": {
+      "employee": 3,
+      "skill": 3,
+      "proficiency_level": 5,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 9,
+    "fields": {
+      "employee": 3,
+      "skill": 4,
+      "proficiency_level": 1,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeecertification",
+    "pk": 5,
+    "fields": {
+      "employee": 3,
+      "certification": 2,
+      "issue_date": "2023-05-01",
+      "expiration_date": null,
+      "last_updated": "2026-01-01T00:00:00Z",
+      "evidence": ""
+    }
+  },
+  {
+    "model": "skillzor.employee",
+    "pk": 4,
+    "fields": {
+      "first_name": "Tjark",
+      "last_name": "Jansen",
+      "department": "Engineering",
+      "job_title": "Software Engineer",
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 10,
+    "fields": {
+      "employee": 4,
+      "skill": 2,
+      "proficiency_level": 5,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 11,
+    "fields": {
+      "employee": 4,
+      "skill": 3,
+      "proficiency_level": 3,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 12,
+    "fields": {
+      "employee": 4,
+      "skill": 4,
+      "proficiency_level": 5,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeecertification",
+    "pk": 6,
+    "fields": {
+      "employee": 4,
+      "certification": 1,
+      "issue_date": "2019-01-01",
+      "expiration_date": null,
+      "last_updated": "2026-01-01T00:00:00Z",
+      "evidence": ""
+    }
+  },
+  {
+    "model": "skillzor.employeecertification",
+    "pk": 7,
+    "fields": {
+      "employee": 4,
+      "certification": 2,
+      "issue_date": "2025-05-01",
+      "expiration_date": null,
+      "last_updated": "2026-01-01T00:00:00Z",
+      "evidence": ""
+    }
+  },
+  {
+    "model": "skillzor.employee",
+    "pk": 5,
+    "fields": {
+      "first_name": "Lio",
+      "last_name": "Linde",
+      "department": "Engineering",
+      "job_title": "Software Engineer",
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 13,
+    "fields": {
+      "employee": 5,
+      "skill": 2,
+      "proficiency_level": 1,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 14,
+    "fields": {
+      "employee": 5,
+      "skill": 3,
+      "proficiency_level": 2,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 15,
+    "fields": {
+      "employee": 5,
+      "skill": 4,
+      "proficiency_level": 1,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeecertification",
+    "pk": 8,
+    "fields": {
+      "employee": 5,
+      "certification": 1,
+      "issue_date": "2022-11-01",
+      "expiration_date": null,
+      "last_updated": "2026-01-01T00:00:00Z",
+      "evidence": ""
+    }
+  },
+  {
+    "model": "skillzor.employee",
+    "pk": 6,
+    "fields": {
+      "first_name": "Kai",
+      "last_name": "Kranich",
+      "department": "Engineering",
+      "job_title": "Software Engineer",
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 16,
+    "fields": {
+      "employee": 6,
+      "skill": 2,
+      "proficiency_level": 2,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 17,
+    "fields": {
+      "employee": 6,
+      "skill": 3,
+      "proficiency_level": 3,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 18,
+    "fields": {
+      "employee": 6,
+      "skill": 4,
+      "proficiency_level": 3,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeecertification",
+    "pk": 9,
+    "fields": {
+      "employee": 6,
+      "certification": 1,
+      "issue_date": "2021-12-01",
+      "expiration_date": null,
+      "last_updated": "2026-01-01T00:00:00Z",
+      "evidence": ""
+    }
+  },
+  {
+    "model": "skillzor.employee",
+    "pk": 7,
+    "fields": {
+      "first_name": "Noa",
+      "last_name": "Specht",
+      "department": "Engineering",
+      "job_title": "Software Engineer",
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 19,
+    "fields": {
+      "employee": 7,
+      "skill": 2,
+      "proficiency_level": 1,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 20,
+    "fields": {
+      "employee": 7,
+      "skill": 3,
+      "proficiency_level": 5,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 21,
+    "fields": {
+      "employee": 7,
+      "skill": 4,
+      "proficiency_level": 2,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeecertification",
+    "pk": 10,
+    "fields": {
+      "employee": 7,
+      "certification": 1,
+      "issue_date": "2020-03-01",
+      "expiration_date": null,
+      "last_updated": "2026-01-01T00:00:00Z",
+      "evidence": ""
+    }
+  },
+  {
+    "model": "skillzor.employeecertification",
+    "pk": 11,
+    "fields": {
+      "employee": 7,
+      "certification": 2,
+      "issue_date": "2021-11-01",
+      "expiration_date": null,
+      "last_updated": "2026-01-01T00:00:00Z",
+      "evidence": ""
+    }
+  },
+  {
+    "model": "skillzor.employee",
+    "pk": 8,
+    "fields": {
+      "first_name": "Jona",
+      "last_name": "Weide",
+      "department": "Engineering",
+      "job_title": "Software Engineer",
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 22,
+    "fields": {
+      "employee": 8,
+      "skill": 2,
+      "proficiency_level": 5,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 23,
+    "fields": {
+      "employee": 8,
+      "skill": 3,
+      "proficiency_level": 2,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 24,
+    "fields": {
+      "employee": 8,
+      "skill": 4,
+      "proficiency_level": 3,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeecertification",
+    "pk": 12,
+    "fields": {
+      "employee": 8,
+      "certification": 2,
+      "issue_date": "2020-01-01",
+      "expiration_date": null,
+      "last_updated": "2026-01-01T00:00:00Z",
+      "evidence": ""
+    }
+  },
+  {
+    "model": "skillzor.employee",
+    "pk": 9,
+    "fields": {
+      "first_name": "Tjark",
+      "last_name": "Eiche",
+      "department": "Engineering",
+      "job_title": "Software Engineer",
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 25,
+    "fields": {
+      "employee": 9,
+      "skill": 2,
+      "proficiency_level": 3,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 26,
+    "fields": {
+      "employee": 9,
+      "skill": 3,
+      "proficiency_level": 4,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 27,
+    "fields": {
+      "employee": 9,
+      "skill": 4,
+      "proficiency_level": 3,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeecertification",
+    "pk": 13,
+    "fields": {
+      "employee": 9,
+      "certification": 1,
+      "issue_date": "2023-12-01",
+      "expiration_date": null,
+      "last_updated": "2026-01-01T00:00:00Z",
+      "evidence": ""
+    }
+  },
+  {
+    "model": "skillzor.employeecertification",
+    "pk": 14,
+    "fields": {
+      "employee": 9,
+      "certification": 2,
+      "issue_date": "2024-08-01",
+      "expiration_date": null,
+      "last_updated": "2026-01-01T00:00:00Z",
+      "evidence": ""
+    }
+  },
+  {
+    "model": "skillzor.employee",
+    "pk": 10,
+    "fields": {
+      "first_name": "Kim",
+      "last_name": "Otter",
+      "department": "Engineering",
+      "job_title": "QA Engineer",
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 28,
+    "fields": {
+      "employee": 10,
+      "skill": 4,
+      "proficiency_level": 4,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 29,
+    "fields": {
+      "employee": 10,
+      "skill": 3,
+      "proficiency_level": 4,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeecertification",
+    "pk": 15,
+    "fields": {
+      "employee": 10,
+      "certification": 1,
+      "issue_date": "2020-04-01",
+      "expiration_date": null,
+      "last_updated": "2026-01-01T00:00:00Z",
+      "evidence": ""
+    }
+  },
+  {
+    "model": "skillzor.employee",
+    "pk": 11,
+    "fields": {
+      "first_name": "Rune",
+      "last_name": "Clausen",
+      "department": "Engineering",
+      "job_title": "QA Engineer",
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 30,
+    "fields": {
+      "employee": 11,
+      "skill": 4,
+      "proficiency_level": 5,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 31,
+    "fields": {
+      "employee": 11,
+      "skill": 3,
+      "proficiency_level": 5,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeecertification",
+    "pk": 16,
+    "fields": {
+      "employee": 11,
+      "certification": 1,
+      "issue_date": "2023-07-01",
+      "expiration_date": null,
+      "last_updated": "2026-01-01T00:00:00Z",
+      "evidence": ""
+    }
+  },
+  {
+    "model": "skillzor.employee",
+    "pk": 12,
+    "fields": {
+      "first_name": "Tjark",
+      "last_name": "Iltis",
+      "department": "Engineering",
+      "job_title": "QA Engineer",
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 32,
+    "fields": {
+      "employee": 12,
+      "skill": 4,
+      "proficiency_level": 5,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 33,
+    "fields": {
+      "employee": 12,
+      "skill": 3,
+      "proficiency_level": 4,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeecertification",
+    "pk": 17,
+    "fields": {
+      "employee": 12,
+      "certification": 1,
+      "issue_date": "2020-09-01",
+      "expiration_date": null,
+      "last_updated": "2026-01-01T00:00:00Z",
+      "evidence": ""
+    }
+  },
+  {
+    "model": "skillzor.employee",
+    "pk": 13,
+    "fields": {
+      "first_name": "Elia",
+      "last_name": "Specht",
+      "department": "Engineering",
+      "job_title": "QA Engineer",
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 34,
+    "fields": {
+      "employee": 13,
+      "skill": 4,
+      "proficiency_level": 4,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 35,
+    "fields": {
+      "employee": 13,
+      "skill": 3,
+      "proficiency_level": 1,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeecertification",
+    "pk": 18,
+    "fields": {
+      "employee": 13,
+      "certification": 1,
+      "issue_date": "2025-02-01",
+      "expiration_date": null,
+      "last_updated": "2026-01-01T00:00:00Z",
+      "evidence": ""
+    }
+  },
+  {
+    "model": "skillzor.employee",
+    "pk": 14,
+    "fields": {
+      "first_name": "Robin",
+      "last_name": "Fichte",
+      "department": "Engineering",
+      "job_title": "QA Engineer",
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 36,
+    "fields": {
+      "employee": 14,
+      "skill": 4,
+      "proficiency_level": 2,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 37,
+    "fields": {
+      "employee": 14,
+      "skill": 3,
+      "proficiency_level": 2,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeecertification",
+    "pk": 19,
+    "fields": {
+      "employee": 14,
+      "certification": 1,
+      "issue_date": "2022-10-01",
+      "expiration_date": null,
+      "last_updated": "2026-01-01T00:00:00Z",
+      "evidence": ""
+    }
+  },
+  {
+    "model": "skillzor.employee",
+    "pk": 15,
+    "fields": {
+      "first_name": "Ole",
+      "last_name": "Eiche",
+      "department": "Engineering",
+      "job_title": "Solution Architect",
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 38,
+    "fields": {
+      "employee": 15,
+      "skill": 1,
+      "proficiency_level": 1,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 39,
+    "fields": {
+      "employee": 15,
+      "skill": 2,
+      "proficiency_level": 4,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 40,
+    "fields": {
+      "employee": 15,
+      "skill": 9,
+      "proficiency_level": 4,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeecertification",
+    "pk": 20,
+    "fields": {
+      "employee": 15,
+      "certification": 3,
+      "issue_date": "2022-09-01",
+      "expiration_date": null,
+      "last_updated": "2026-01-01T00:00:00Z",
+      "evidence": ""
+    }
+  },
+  {
+    "model": "skillzor.employee",
+    "pk": 16,
+    "fields": {
+      "first_name": "Maxi",
+      "last_name": "Moor",
+      "department": "Data",
+      "job_title": "Data Scientist",
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 41,
+    "fields": {
+      "employee": 16,
+      "skill": 5,
+      "proficiency_level": 3,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 42,
+    "fields": {
+      "employee": 16,
+      "skill": 6,
+      "proficiency_level": 5,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 43,
+    "fields": {
+      "employee": 16,
+      "skill": 3,
+      "proficiency_level": 1,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employee",
+    "pk": 17,
+    "fields": {
+      "first_name": "Sam",
+      "last_name": "Clausen",
+      "department": "Data",
+      "job_title": "Data Scientist",
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 44,
+    "fields": {
+      "employee": 17,
+      "skill": 5,
+      "proficiency_level": 1,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 45,
+    "fields": {
+      "employee": 17,
+      "skill": 6,
+      "proficiency_level": 5,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 46,
+    "fields": {
+      "employee": 17,
+      "skill": 3,
+      "proficiency_level": 3,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employee",
+    "pk": 18,
+    "fields": {
+      "first_name": "Sam",
+      "last_name": "Amsel",
+      "department": "Data",
+      "job_title": "Data Scientist",
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 47,
+    "fields": {
+      "employee": 18,
+      "skill": 5,
+      "proficiency_level": 3,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 48,
+    "fields": {
+      "employee": 18,
+      "skill": 6,
+      "proficiency_level": 1,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 49,
+    "fields": {
+      "employee": 18,
+      "skill": 3,
+      "proficiency_level": 3,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employee",
+    "pk": 19,
+    "fields": {
+      "first_name": "Kim",
+      "last_name": "Falk",
+      "department": "Data",
+      "job_title": "Data Scientist",
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 50,
+    "fields": {
+      "employee": 19,
+      "skill": 5,
+      "proficiency_level": 4,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 51,
+    "fields": {
+      "employee": 19,
+      "skill": 6,
+      "proficiency_level": 2,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 52,
+    "fields": {
+      "employee": 19,
+      "skill": 3,
+      "proficiency_level": 4,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employee",
+    "pk": 20,
+    "fields": {
+      "first_name": "Noa",
+      "last_name": "Nessel",
+      "department": "Data",
+      "job_title": "Data Scientist",
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 53,
+    "fields": {
+      "employee": 20,
+      "skill": 5,
+      "proficiency_level": 1,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 54,
+    "fields": {
+      "employee": 20,
+      "skill": 6,
+      "proficiency_level": 3,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 55,
+    "fields": {
+      "employee": 20,
+      "skill": 3,
+      "proficiency_level": 5,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employee",
+    "pk": 21,
+    "fields": {
+      "first_name": "Noa",
+      "last_name": "Erle",
+      "department": "Data",
+      "job_title": "Data Scientist",
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 56,
+    "fields": {
+      "employee": 21,
+      "skill": 5,
+      "proficiency_level": 2,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 57,
+    "fields": {
+      "employee": 21,
+      "skill": 6,
+      "proficiency_level": 5,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 58,
+    "fields": {
+      "employee": 21,
+      "skill": 3,
+      "proficiency_level": 1,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employee",
+    "pk": 22,
+    "fields": {
+      "first_name": "Remi",
+      "last_name": "Hafer",
+      "department": "Data",
+      "job_title": "Data Engineer",
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 59,
+    "fields": {
+      "employee": 22,
+      "skill": 3,
+      "proficiency_level": 3,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 60,
+    "fields": {
+      "employee": 22,
+      "skill": 5,
+      "proficiency_level": 5,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employee",
+    "pk": 23,
+    "fields": {
+      "first_name": "Ole",
+      "last_name": "Quendel",
+      "department": "Data",
+      "job_title": "Data Engineer",
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 61,
+    "fields": {
+      "employee": 23,
+      "skill": 3,
+      "proficiency_level": 5,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 62,
+    "fields": {
+      "employee": 23,
+      "skill": 5,
+      "proficiency_level": 2,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employee",
+    "pk": 24,
+    "fields": {
+      "first_name": "Alex",
+      "last_name": "Dachs",
+      "department": "People & Culture",
+      "job_title": "HR Business Partner",
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 63,
+    "fields": {
+      "employee": 24,
+      "skill": 6,
+      "proficiency_level": 2,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 64,
+    "fields": {
+      "employee": 24,
+      "skill": 7,
+      "proficiency_level": 3,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 65,
+    "fields": {
+      "employee": 24,
+      "skill": 8,
+      "proficiency_level": 2,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeecertification",
+    "pk": 21,
+    "fields": {
+      "employee": 24,
+      "certification": 2,
+      "issue_date": "2025-09-01",
+      "expiration_date": null,
+      "last_updated": "2026-01-01T00:00:00Z",
+      "evidence": ""
+    }
+  },
+  {
+    "model": "skillzor.employee",
+    "pk": 25,
+    "fields": {
+      "first_name": "Fenja",
+      "last_name": "Eiche",
+      "department": "People & Culture",
+      "job_title": "HR Business Partner",
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 66,
+    "fields": {
+      "employee": 25,
+      "skill": 6,
+      "proficiency_level": 1,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 67,
+    "fields": {
+      "employee": 25,
+      "skill": 7,
+      "proficiency_level": 5,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 68,
+    "fields": {
+      "employee": 25,
+      "skill": 8,
+      "proficiency_level": 3,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeecertification",
+    "pk": 22,
+    "fields": {
+      "employee": 25,
+      "certification": 2,
+      "issue_date": "2019-06-01",
+      "expiration_date": null,
+      "last_updated": "2026-01-01T00:00:00Z",
+      "evidence": ""
+    }
+  },
+  {
+    "model": "skillzor.employee",
+    "pk": 26,
+    "fields": {
+      "first_name": "Luca",
+      "last_name": "Ysop",
+      "department": "People & Culture",
+      "job_title": "HR Business Partner",
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 69,
+    "fields": {
+      "employee": 26,
+      "skill": 6,
+      "proficiency_level": 3,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 70,
+    "fields": {
+      "employee": 26,
+      "skill": 7,
+      "proficiency_level": 2,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 71,
+    "fields": {
+      "employee": 26,
+      "skill": 8,
+      "proficiency_level": 1,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeecertification",
+    "pk": 23,
+    "fields": {
+      "employee": 26,
+      "certification": 2,
+      "issue_date": "2023-02-01",
+      "expiration_date": null,
+      "last_updated": "2026-01-01T00:00:00Z",
+      "evidence": ""
+    }
+  },
+  {
+    "model": "skillzor.employee",
+    "pk": 27,
+    "fields": {
+      "first_name": "Sila",
+      "last_name": "Nessel",
+      "department": "People & Culture",
+      "job_title": "HR Business Partner",
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 72,
+    "fields": {
+      "employee": 27,
+      "skill": 6,
+      "proficiency_level": 1,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 73,
+    "fields": {
+      "employee": 27,
+      "skill": 7,
+      "proficiency_level": 4,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 74,
+    "fields": {
+      "employee": 27,
+      "skill": 8,
+      "proficiency_level": 1,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employee",
+    "pk": 28,
+    "fields": {
+      "first_name": "Quinn",
+      "last_name": "Falk",
+      "department": "People & Culture",
+      "job_title": "HR Business Partner",
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 75,
+    "fields": {
+      "employee": 28,
+      "skill": 6,
+      "proficiency_level": 5,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 76,
+    "fields": {
+      "employee": 28,
+      "skill": 7,
+      "proficiency_level": 2,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 77,
+    "fields": {
+      "employee": 28,
+      "skill": 8,
+      "proficiency_level": 2,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeecertification",
+    "pk": 24,
+    "fields": {
+      "employee": 28,
+      "certification": 2,
+      "issue_date": "2023-03-01",
+      "expiration_date": null,
+      "last_updated": "2026-01-01T00:00:00Z",
+      "evidence": ""
+    }
+  },
+  {
+    "model": "skillzor.employee",
+    "pk": 29,
+    "fields": {
+      "first_name": "Rune",
+      "last_name": "Erle",
+      "department": "Sales",
+      "job_title": "Account Manager",
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 78,
+    "fields": {
+      "employee": 29,
+      "skill": 7,
+      "proficiency_level": 3,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 79,
+    "fields": {
+      "employee": 29,
+      "skill": 8,
+      "proficiency_level": 5,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employee",
+    "pk": 30,
+    "fields": {
+      "first_name": "Maxi",
+      "last_name": "Jansen",
+      "department": "Sales",
+      "job_title": "Account Manager",
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 80,
+    "fields": {
+      "employee": 30,
+      "skill": 7,
+      "proficiency_level": 5,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 81,
+    "fields": {
+      "employee": 30,
+      "skill": 8,
+      "proficiency_level": 4,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employee",
+    "pk": 31,
+    "fields": {
+      "first_name": "Noa",
+      "last_name": "Pappel",
+      "department": "Sales",
+      "job_title": "Account Manager",
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 82,
+    "fields": {
+      "employee": 31,
+      "skill": 7,
+      "proficiency_level": 2,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 83,
+    "fields": {
+      "employee": 31,
+      "skill": 8,
+      "proficiency_level": 5,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employee",
+    "pk": 32,
+    "fields": {
+      "first_name": "Ari",
+      "last_name": "Jansen",
+      "department": "Legal",
+      "job_title": "Legal Counsel",
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 84,
+    "fields": {
+      "employee": 32,
+      "skill": 6,
+      "proficiency_level": 2,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employee",
+    "pk": 33,
+    "fields": {
+      "first_name": "Ole",
+      "last_name": "Dorn",
+      "department": "Legal",
+      "job_title": "Legal Counsel",
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "skillzor.employeeskill",
+    "pk": 85,
+    "fields": {
+      "employee": 33,
+      "skill": 6,
+      "proficiency_level": 3,
+      "last_updated": "2026-01-01T00:00:00Z"
+    }
+  }
+]

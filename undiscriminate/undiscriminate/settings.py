@@ -48,6 +48,19 @@ if not SECRET_KEY:
             "The SECRET_KEY environment variable is not set. This is required for security."
         )
 
+# Key for pseudonymising employee IDs in the AI export. Keep it separate from
+# SECRET_KEY: rotating it deliberately unlinks all previously exported data.
+PSEUDONYM_KEY = os.getenv("PSEUDONYM_KEY")
+if not PSEUDONYM_KEY:
+    if DEBUG:
+        PSEUDONYM_KEY = "insecure-dev-pseudonym-key"
+        logger.warning("PSEUDONYM_KEY not set. Using insecure development key.")
+    else:
+        raise RuntimeError("The PSEUDONYM_KEY environment variable is not set.")
+
+# Minimum group size for the k-anonymised AI export.
+EXPORT_MIN_K = int(os.getenv("EXPORT_MIN_K", "5"))
+
 ALLOWED_HOSTS = [
     host.strip() for host in os.getenv("ALLOWED_HOSTS", "").split(",") if host
 ]
@@ -165,6 +178,44 @@ REST_FRAMEWORK = {
         "rest_framework.authentication.SessionAuthentication",
     ],
     "DEFAULT_PERMISSION_CLASSES": [
-        "rest_framework.permissions.IsAuthenticated",
+        "skillzor.permissions.StrictModelPermissions",
     ],
 }
+
+# OAuth 2.0 Security Best Current Practice (RFC 9700). Everything is enforced,
+# except two concessions that only apply in DEBUG for the local frontend demo
+# (password grant against http://localhost).
+_RFC9700_ENFORCED = [
+    "IMPLICIT_GRANT",
+    "PKCE_METHOD",
+    "ACCESS_TOKEN_TRANSPORT",
+    "AUTHZ_RESPONSE_ISS",
+    "TOKEN_STORAGE",
+    "REFRESH_TOKEN",
+    "REDIRECT_URI_MATCHING",
+    "PKCE_REQUIRED",
+]
+_RFC9700_PRODUCTION_ONLY = ["PASSWORD_GRANT", "REDIRECT_URI_SCHEME"]
+
+OAUTH2_PROVIDER = {
+    "PKCE_REQUIRED": True,
+    "REFRESH_TOKEN_REUSE_PROTECTION": True,  # nosec B105
+    "ALLOW_URI_WILDCARDS": False,
+    "ALLOWED_REDIRECT_URI_SCHEMES": ["http", "https"] if DEBUG else ["https"],
+    **{f"COMPLIANT_BCP_RFC9700_{gate}": True for gate in _RFC9700_ENFORCED},
+    **{f"COMPLIANT_BCP_RFC9700_{gate}": not DEBUG for gate in _RFC9700_PRODUCTION_ONLY},
+}
+
+# HSTS preloading is a one-way commitment for the whole domain; leave that
+# decision to whoever owns the domain.
+SILENCED_SYSTEM_CHECKS = ["security.W021"]
+
+if not DEBUG:
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_SSL_REDIRECT = os.getenv("SECURE_SSL_REDIRECT", "True") == "True"
+    SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+    SECURE_HSTS_SECONDS = int(os.getenv("SECURE_HSTS_SECONDS", "3600"))
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+
+STATIC_ROOT = BASE_DIR / "staticfiles"
