@@ -54,3 +54,7 @@ dist/
 staticfiles/
 media/
 frontend/oauth_config.js
+.venv/
+staticfiles/
+htmlcov/
+.coverage
