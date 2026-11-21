@@ -1,110 +1,144 @@
 # Undiscriminating Discriminator
 
-[![Python 3.12](https://img.shields.io/badge/python-3.12-blue.svg)](https://www.python.org/) [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![CI](https://github.com/StefanSpiess/undiscriminating_discriminator/actions/workflows/python-app.yml/badge.svg)](https://github.com/StefanSpiess/undiscriminating_discriminator/actions/workflows/python-app.yml)
+[![Python 3.12](https://img.shields.io/badge/python-3.12-blue.svg)](https://www.python.org/)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
-## Overview
-Undiscriminating Discriminator is an MVP prototype exploring a least-discriminating multi-model approach for AI-driven HR skill management. It provides a RESTful interface to manage employees, skills, certifications, projects, budgets, and development actions, facilitating experimentation with fair, multi-framework competency models.
+**A skills database that is built to feed AI systems without letting them see who people are.**
 
-### Features
-- CRUD operations for Employees, Skills, Certifications, Projects, Budgets, and Development Actions via Django REST framework.
-- Data fixtures for rapid testing and demonstration.
-- Modular design supporting extension with additional AI/ML models and fairness frameworks.
+HR teams want AI for skill matching, staffing and development planning. The
+fastest way to get a biased model is to train it on data that contains names,
+demographics and other proxies. This project goes the other way: it stores the
+minimum, describes competences in a standard vocabulary (the European
+e-Competence Framework, e-CF, standardised as EN 16234-1),
+and offers a single, privacy-preserving export for anything downstream.
 
-## LLM Code Assistant Collaboration
-This repository is designed for iterative development with LLM-based code assistant agents. Guidelines for maintainers and agents reside in [AGENTS.md](AGENTS.md). Additional context is stored in `background/` and plugin documentation in `plugins/`. These directories are development-only resources and should be excluded from runtime containers.
+## What it does
 
-## Tech Stack
-- Python 3.12
-- Django 5.2
-- Django REST framework
-- SQLite (default; easily configurable for PostgreSQL/MySQL)
-- Pytest for testing
-- Black for code formatting
+* **Skill profiles on a common scale.** Employees, skills, certifications,
+  projects, budgets and development actions via a Django REST API. Skills
+  reference e-CF competences (`e-CF:B.1`); proficiency follows the e-CF levels
+  1–5 and is validated as such.
+* **No demographics by design.** The data model has no fields for age, gender,
+  nationality or similar. You can't leak what you don't store.
+* **Pseudonymised, k-anonymised AI export.** `GET /api/ai-export/` releases
+  skill profiles with HMAC pseudonyms instead of names, generalises job titles
+  and departments until every group has at least *k* members, and drops rare
+  skills that would single someone out. Guarantees *and limits* are written
+  down in [docs/ai_export.md](docs/ai_export.md).
+* **Need-to-know access.** Every endpoint requires the matching Django model
+  permission, reads included. The export needs its own permission on top.
+* **OAuth 2.0 per RFC 9700.** All Security BCP gates of django-oauth-toolkit are
+  enforced in production; legacy flows only work in `DEBUG` for the local demo.
 
-## Prerequisites
-- Git
-- Python 3.12
-- Pipenv (or `venv` and `pip`)
+## Quickstart
 
-## Installation
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-username/undiscriminating_discriminator.git
-   cd undiscriminating_discriminator
-   ```
-2. Install dependencies with Pipenv:
-   ```bash
-   pipenv install --dev
-   pipenv shell
-   ```
-   *Alternatively, use `python -m venv env && source env/bin/activate && pip install -r requirements.txt`.*
-3. Configure environment variables: create a `.env` file in the project root (see `.env.example`):
-   ```ini
-   DEBUG=True
-   SECRET_KEY=your-secret-key
-   ALLOWED_HOSTS=localhost,127.0.0.1
-   DATABASE_URL=sqlite:///db.sqlite3
-   ```
-   If `SECRET_KEY` is missing and `DEBUG` is `True`, a development placeholder is used
-   and a warning is logged using Django's logging system. When `DEBUG` is `False`, `SECRET_KEY` must be set or the
-   application will fail to start.
-4. Apply migrations and load sample data:
-   ```bash
-   python manage.py migrate
-   python manage.py loaddata fixtures/sample_data.json
-   ```
-
-## Running the Application
-Start the development server:
 ```bash
-python manage.py runserver
-```
-Visit `http://127.0.0.1:8000/api/` for the API root, or navigate to specific endpoints (see **API Endpoints** below).
-
-## Frontend Authentication Example
-An example login form using the OAuth2 *password* grant is provided in
-`frontend/index.html`.
-Copy `frontend/oauth_config.example.js` to `frontend/oauth_config.js` and
-replace the placeholder values with the client ID and secret from the Django
-admin (**Applications** section). Serve the `frontend` directory via
-`python -m http.server 9000` (or any other port) and open
-`http://localhost:9000/index.html` in a browser.
-The form posts the user's credentials to `/o/token/` and displays the returned
-access token. This flow is intended for local testing only and should not be
-used in production.
-
-## API Endpoints
-| Resource                 | Endpoint                       | Methods       |
-| ------------------------ | ------------------------------ | ------------- |
-| Employees                | `/api/employees/`              | GET, POST     |
-| Employee Detail          | `/api/employees/{id}/`         | GET, PUT, DELETE |
-| Skills                   | `/api/skills/`                 | GET, POST     |
-| Certifications           | `/api/certifications/`         | GET, POST     |
-| Projects                 | `/api/projects/`               | GET, POST     |
-| Budgets                  | `/api/budgets/`                | GET, POST     |
-| Development Actions      | `/api/development-actions/`    | GET, POST     |
-
-## Testing
-Run the full test suite with coverage:
-```bash
-pytest --cov=.
-```  
-Ensure code is formatted and linted:
-```bash
-black --check .
-```
-Alternatively, use the included `Makefile`:
-```bash
-make install  # install dependencies with Pipenv
-make check    # run black, flake8, and tests
+pipenv install --dev
+cd undiscriminate
+pipenv run python manage.py migrate
+pipenv run python manage.py loaddata fixtures/demo_org.json   # fictional company, 33 people
+pipenv run python manage.py createsuperuser
+pipenv run python manage.py runserver
 ```
 
-## Contributing
-Contributions are welcome! Please follow these steps:
-1. Fork the repository and create a feature branch (`git checkout -b feature/my-feature`).
-2. Commit your changes (`git commit -am 'Add new feature'`).
-3. Ensure all tests pass and code is formatted (`pytest`, `black`).
-4. Push to the branch (`git push origin feature/my-feature`) and submit a Pull Request.
+Log in at `http://127.0.0.1:8000/admin/`, then open
+`http://127.0.0.1:8000/api/ai-export/`. The demo company is built so that every
+anonymisation rule fires at least once (lone architect, a department of exactly
+five, two departments too small to stand alone, a skill only one person has).
+Regenerate it with `python scripts/generate_demo_fixture.py`.
+
+## API
+
+| Resource | Endpoint |
+| --- | --- |
+| Employees | `/api/employees/` |
+| Skills | `/api/skills/` |
+| Employee skills (proficiency) | `/api/employee-skills/` |
+| Certifications | `/api/certifications/` |
+| Employee certifications | `/api/employee-certifications/` |
+| Projects | `/api/projects/` |
+| Budgets | `/api/budgets/` |
+| Development actions | `/api/development-actions/` |
+| **AI export** | `/api/ai-export/?k=5` |
+
+All resources support the usual list/detail/create/update/delete routes.
+
+## Configuration
+
+| Variable | Required in production | Purpose |
+| --- | --- | --- |
+| `SECRET_KEY` | yes | Django secret |
+| `PSEUDONYM_KEY` | yes | HMAC key for export pseudonyms. Rotate to unlink old exports. |
+| `ALLOWED_HOSTS` | yes | Comma-separated host names |
+| `DEBUG` | – | `True` only for local development (the Docker image sets `False`) |
+| `EXPORT_MIN_K` | – | Minimum group size for the export (default `5`) |
+| `SECURE_SSL_REDIRECT`, `SECURE_HSTS_SECONDS` | – | TLS hardening, on by default when `DEBUG=False` |
+
+Run it in a container:
+
+```bash
+docker build -t undiscriminating-discriminator .
+docker run -p 8000:8000 \
+  -e SECRET_KEY=... -e PSEUDONYM_KEY=... -e ALLOWED_HOSTS=localhost \
+  undiscriminating-discriminator
+```
+
+## Quality gates
+
+Every push runs, and must pass:
+
+```bash
+pipenv run black --check .
+pipenv run flake8
+pipenv run bandit -r undiscriminate scripts -x "*/tests/*"
+pipenv run python manage.py makemigrations --check      # in undiscriminate/
+pipenv run python manage.py check --deploy --fail-level WARNING
+pipenv run pytest --cov=undiscriminate --cov-fail-under=90
+```
+
+plus a Docker build. The k-anonymity guarantee is covered by a property test
+over 300 random org charts. To check that the test actually bites, the
+folding step was disabled once during development: 201 of the 300 cases failed.
+
+## How this was built: agentic engineering
+
+This repository is also an experiment in building software with coding agents
+while keeping a human in charge of intent and quality.
+
+1. **Research first.** The data model started as a literature-backed design
+   note on competency standards (e-CF, IEEE RCD, Open Badges) and bias
+   mitigation, kept in [`background/`](background/).
+2. **A contract for agents.** [`AGENTS.md`](AGENTS.md) tells any agent how to
+   set up, which gates must pass, and which privacy invariants must never be
+   broken. Tools that read `AGENTS.md` (Codex, Claude Code, Copilot) all get
+   the same rules.
+3. **Agents do the work, in reviewable slices.** The first iteration was
+   built in 10 days, mostly through small pull requests opened by OpenAI
+   Codex: 14 of the first 17 merged PRs. The privacy-preserving export,
+   permission model and hardening were added in a later pass with Claude Code.
+4. **Machines check machines.** Formatting, linting, static security
+   analysis, Django deploy checks, migrations, coverage and a property test
+   are enforced in CI, so an agent can't "finish" a task by just claiming it's
+   done.
+5. **Humans own the trade-offs.** Agents are good at implementing a rule;
+   deciding what *k* should be, or whether an export is acceptable at all, is
+   documented as a human decision ([docs/ai_export.md](docs/ai_export.md#known-limits)).
+
+## Project layout
+
+```
+undiscriminate/            Django project
+  skillzor/                app: models, API, permissions
+    privacy.py             pseudonymisation and k-anonymity
+  fixtures/demo_org.json   fictional demo company
+scripts/                   fixture generator
+docs/                      export guarantees, deployment notes
+background/                design research (not shipped in the image)
+frontend/                  minimal OAuth login demo (local only)
+AGENTS.md                  instructions for coding agents
+```
 
 ## License
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+MIT, see [LICENSE](LICENSE).

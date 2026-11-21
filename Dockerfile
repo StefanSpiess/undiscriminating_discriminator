@@ -1,33 +1,28 @@
-# Dockerfile for Undiscriminating Discriminator
-# Based on Python 3.12 slim image with best practices
-
+# Production image for Undiscriminating Discriminator
 FROM python:3.12-slim
 
-# System dependencies
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends \
-       build-essential \
-       libpq-dev \
-    && rm -rf /var/lib/apt/lists/*
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    DEBUG=False
 
-# Create working directory
 WORKDIR /app
 
-# Copy Pipfile and lock for dependency installation
+# Install only runtime dependencies from the lock file (no dev tools).
 COPY Pipfile Pipfile.lock /app/
-
-# Install pipenv and project dependencies in one layer
 RUN pip install --no-cache-dir pipenv \
-    && PIPENV_VENV_IN_PROJECT=1 pipenv install --deploy --system --ignore-pipfile
+    && pipenv install --deploy --system --ignore-pipfile \
+    && pip uninstall -y pipenv
 
-# Copy project files
-COPY . /app
+COPY undiscriminate/ /app/undiscriminate/
 
-# Collect static files (if configured)
-# RUN python manage.py collectstatic --noinput
+# Run as an unprivileged user.
+RUN useradd --create-home --uid 10001 app \
+    && mkdir -p /app/undiscriminate/staticfiles \
+    && chown -R app:app /app
+USER app
 
-# Expose the port
+WORKDIR /app/undiscriminate
 EXPOSE 8000
 
-# Start the application using a production-ready server
-CMD ["gunicorn", "undiscriminate.wsgi:application", "--bind", "0.0.0.0:8000"]
+# SECRET_KEY, PSEUDONYM_KEY and ALLOWED_HOSTS must be provided at runtime.
+CMD ["gunicorn", "undiscriminate.wsgi:application", "--bind", "0.0.0.0:8000", "--workers", "2"]

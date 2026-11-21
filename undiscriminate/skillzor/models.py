@@ -6,6 +6,7 @@ projects, budgets, and development actions. It provides a structured way to trac
 competencies, certifications, and professional development activities within an organization.
 """
 
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.utils.timezone import now
 
@@ -28,6 +29,14 @@ class Employee(models.Model):
     department = models.CharField(max_length=100)
     job_title = models.CharField(max_length=100)
     last_updated = models.DateTimeField(default=now)
+
+    class Meta:
+        permissions = [
+            (
+                "export_pseudonymized_profiles",
+                "Can export pseudonymized skill profiles for AI systems",
+            )
+        ]
 
     def __str__(self):
         return self.first_name + " " + self.last_name
@@ -113,7 +122,10 @@ class EmployeeSkill(models.Model):
 
     employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
     skill = models.ForeignKey(Skill, on_delete=models.CASCADE)
-    proficiency_level = models.IntegerField()
+    # Levels 1-5 follow the e-CF proficiency scale (e-1 ... e-5).
+    proficiency_level = models.PositiveSmallIntegerField(
+        validators=[MinValueValidator(1), MaxValueValidator(5)]
+    )
     last_updated = models.DateTimeField(default=now)
 
     class Meta:

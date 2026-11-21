@@ -4,15 +4,16 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-django = "*"
-pytest = "*"
-pytest-cov = "*"
-black = "*"
+django = "~=5.2"
 djangorestframework = "*"
-pytest-django = "*"
 django-oauth-toolkit = "*"
+gunicorn = "*"
 
 [dev-packages]
+pytest = "*"
+pytest-cov = "*"
+pytest-django = "*"
+black = "*"
 flake8 = "*"
 bandit = "*"
 
